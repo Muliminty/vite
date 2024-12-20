@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Input, Button, Card, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import Header from '@/components/Header'
 import styles from './index.module.scss'
 
 interface LoginForm {
@@ -31,40 +32,43 @@ const Login: FC = () => {
 
     return (
         <div className={styles.container}>
-            <Card className={styles.card} title="系统登录" bordered={false}>
-                <Form
-                    name="login"
-                    onFinish={onFinish}
-                    autoComplete="off"
-                    size="large"
-                >
-                    <Form.Item
-                        name="username"
-                        rules={[{ required: true, message: '请输入用户名' }]}
+            <Header />
+            <div className={styles.loginContent}>
+                <Card className={styles.card} title="系统登录" bordered={false}>
+                    <Form
+                        name="login"
+                        onFinish={onFinish}
+                        autoComplete="off"
+                        size="large"
                     >
-                        <Input
-                            prefix={<UserOutlined />}
-                            placeholder="用户名"
-                        />
-                    </Form.Item>
+                        <Form.Item
+                            name="username"
+                            rules={[{ required: true, message: '请输入用户名' }]}
+                        >
+                            <Input
+                                prefix={<UserOutlined />}
+                                placeholder="用户名"
+                            />
+                        </Form.Item>
 
-                    <Form.Item
-                        name="password"
-                        rules={[{ required: true, message: '请输入密码' }]}
-                    >
-                        <Input.Password
-                            prefix={<LockOutlined />}
-                            placeholder="密码"
-                        />
-                    </Form.Item>
+                        <Form.Item
+                            name="password"
+                            rules={[{ required: true, message: '请输入密码' }]}
+                        >
+                            <Input.Password
+                                prefix={<LockOutlined />}
+                                placeholder="密码"
+                            />
+                        </Form.Item>
 
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" block>
-                            登录
-                        </Button>
-                    </Form.Item>
-                </Form>
-            </Card>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" block>
+                                登录
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Card>
+            </div>
         </div>
     )
 }
