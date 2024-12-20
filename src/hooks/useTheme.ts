@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { theme as antdTheme } from 'antd';
 import type { ThemeConfig } from 'antd';
 
@@ -33,7 +33,7 @@ const darkTheme: ThemeConfig = {
 
 export const useTheme = () => {
     const getInitialTheme = (): Theme => {
-        const savedTheme = localStorage.getItem('theme') as Theme;
+        const savedTheme = localStorage.getItem('theme') as Theme | null;
         if (savedTheme) {
             return savedTheme;
         }
@@ -67,13 +67,28 @@ export const useTheme = () => {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme]);
 
-    // 返回当前主题配置
-    const antdThemeConfig = theme === 'light' ? lightTheme : darkTheme;
+    useEffect(() => {
+        const root = document.documentElement;
+        const themeConfig = theme === 'light' ? lightTheme : darkTheme;
+        if (themeConfig.components && themeConfig.components.Layout) {
+            root.style.setProperty('--header-bg', themeConfig.components.Layout.headerBg || '');
+        }
+    }, [theme]);
+
+    // 使用 useMemo 确保 antdThemeConfig 在 theme 改变时更新
+    const antdThemeConfig = useMemo(() => {
+        return theme === 'light' ? lightTheme : darkTheme;
+    }, [theme]);
+
+    useEffect(() => {
+        console.log('Current theme:', theme);
+        console.log('Ant Design theme config:', antdThemeConfig);
+    }, [theme, antdThemeConfig]);
 
     return {
         theme,
         toggleTheme,
         isDark: theme === 'dark',
-        antdThemeConfig, // 新增返回 Ant Design 主题配置
+        antdThemeConfig,
     };
 }; 
