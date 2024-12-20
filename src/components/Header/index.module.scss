@@ -5,6 +5,7 @@
   padding: 0 24px;
   height: 48px;
   background-color: var(--header-bg);
+  color: var(--text-color);
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   position: fixed;
   top: 0;
@@ -21,4 +22,5 @@
     display: flex;
     align-items: center;
   }
-} 
+}
+

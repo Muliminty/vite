@@ -48,6 +48,7 @@ export const useTheme = () => {
 
     const toggleTheme = () => {
         setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -65,14 +66,6 @@ export const useTheme = () => {
     useEffect(() => {
         localStorage.setItem('theme', theme);
         document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
-
-    useEffect(() => {
-        const root = document.documentElement;
-        const themeConfig = theme === 'light' ? lightTheme : darkTheme;
-        if (themeConfig.components && themeConfig.components.Layout) {
-            root.style.setProperty('--header-bg', themeConfig.components.Layout.headerBg || '');
-        }
     }, [theme]);
 
     // 使用 useMemo 确保 antdThemeConfig 在 theme 改变时更新

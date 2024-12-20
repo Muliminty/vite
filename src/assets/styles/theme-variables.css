@@ -1,0 +1,15 @@
+:root {
+    /* 通用颜色变量（默认亮色主题） */
+    --color-primary: #1677ff;
+    --header-bg: #fff;
+    --text-color: #000;
+    /* 可添加其他亮色主题变量 */
+}
+
+[data-theme='dark'] {
+    /* 覆盖暗色主题变量 */
+    --color-primary: #1677ff;
+    --header-bg: #141414;
+    --text-color: #fff;
+    /* 可添加其他暗色主题变量 */
+}
