@@ -5,7 +5,7 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     UserOutlined,
-    VideoCameraOutlined,
+    // VideoCameraOutlined,
     TeamOutlined,
 } from '@ant-design/icons';
 
@@ -13,7 +13,7 @@ const { Header, Sider, Content } = Layout;
 
 const menuItems = [
     { key: 'dashboard', icon: <UserOutlined />, label: 'Dashboard' },
-    { key: 'login', icon: <VideoCameraOutlined />, label: 'Login' },
+    // { key: 'login', icon: <VideoCameraOutlined />, label: 'Login' },
     { key: 'user', icon: <TeamOutlined />, label: 'User' },
     // 其他菜单项
 ];
