@@ -3,16 +3,16 @@ import { RouteObject } from 'react-router-dom'
 import BasicLayout from '@/layouts/BasicLayout'
 
 // eslint-disable-next-line react-refresh/only-export-components
-const Dashboard = lazy(() => import('@/pages/dashboard'))
+const UserPage = lazy(() => import('@/pages/user'))
 
-export const dashboardRoutes: RouteObject[] = [
+export const userRoutes: RouteObject[] = [
     {
         path: '/',
         element: <BasicLayout />,
         children: [
             {
-                path: '/dashboard',
-                element: <Dashboard />
+                path: '/user',
+                element: <UserPage />
             }
         ]
     }
